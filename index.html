@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore a suite of AI-powered image and PDF tools, including PDF compression, image optimization, and more. Fast, modern, and user-friendly.">
+    <meta name="keywords" content="PDF tools, image tools, AI-powered tools, PDF compression, image optimization, online tools">
+    <meta name="author" content="Your Name">
+    <title>AI Tools Hub - Image & PDF Utilities</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6D28D9, #2563EB);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            color: #F3F4F6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path fill="none" stroke="#FFFFFF" stroke-width="0.5" d="M10 10 L30 10 L20 25 L10 10 M40 15 L60 15 L50 30 L40 15 M70 20 L90 20 L80 35 L70 20 M10 40 L30 40 L20 55 L10 40 M40 45 L60 45 L50 60 L40 45 M70 50 L90 50 L80 65 L70 50"/></svg>');
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: #121212;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #A78BFA;
+            letter-spacing: 1px;
+        }
+
+        .header nav a {
+            color: #F3F4F6;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .header nav a:hover {
+            color: #22D3EE;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #F3F4F6;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #9CA3AF;
+            margin-bottom: 20px;
+        }
+
+        .hero .cta-btn {
+            padding: 14px 30px;
+            background: #EC4899;
+            border: none;
+            border-radius: 8px;
+            color: #F3F4F6;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+        }
+
+        .hero .cta-btn:hover {
+            transform: scale(1.05);
+            background: #22D3EE;
+            box-shadow: 0 0 25px rgba(34, 211, 238, 0.8);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+        }
+
+        .tool-card i {
+            font-size: 36px;
+            color: #F3F4F6;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .tool-card:hover i {
+            color: #22D3EE;
+        }
+
+        .tool-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #A78BFA;
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            font-size: 14px;
+            color: #9CA3AF;
+        }
+
+        .tool-card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #EC4899;
+            color: #F3F4F6;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+        }
+
+        .tool-card a:hover {
+            background: #22D3EE;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.8);
+        }
+
+        .ad-space {
+            margin: 20px auto;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            max-width: 728px;
+        }
+
+        .footer {
+            background: #121212;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #9CA3AF;
+            margin-bottom: 10px;
+        }
+
+        .footer .social-links a {
+            color: #F3F4F6;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .footer .social-links a:hover {
+            color: #22D3EE;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header nav {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>AI Tools Hub</h1>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#tools">Tools</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2 id="hero-text">Welcome to AI Tools Hub</h2>
+            <p>Your one-stop solution for AI-powered image and PDF utilities. Fast, modern, and easy to use.</p>
+            <button class="cta-btn">Explore Tools</button>
+        </section>
+
+        <!-- Tools Grid -->
+        <section class="tools-grid">
+           <div class="tool-card">
+    <i class="fas fa-file-pdf"></i>
+    <h3>PDF Compressor</h3>
+    <p>Reduce PDF file size with customizable compression levels.</p>
+    <a href="/img-compress.html">Try Now</a> <!-- This is the hyperlink -->
+                </div>
+
+
+            <div class="tool-card">
+                <i class="fas fa-image"></i>
+                <h3>Image Optimizer</h3>
+                <p>Compress and optimize images without losing quality.</p>
+                <a href="#image-optimizer">Try Now</a>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-file-signature"></i>
+                <h3>PDF Editor</h3>
+                <p>Edit text, images, and pages in your PDFs.</p>
+                <a href="#pdf-editor">Try Now</a>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-exchange-alt"></i>
+                <h3>Image Converter</h3>
+                <p>Convert images between formats like JPG, PNG, and more.</p>
+                <a href="#image-converter">Try Now</a>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-file-upload"></i>
+                <h3>PDF Merger</h3>
+                <p>Combine multiple PDFs into a single file.</p>
+                <a href="#pdf-merger">Try Now</a>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-crop"></i>
+                <h3>Image Resizer</h3>
+                <p>Resize images to custom dimensions effortlessly.</p>
+                <a href="#image-resizer">Try Now</a>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-cut"></i>
+                <h3>PDF Splitter</h3>
+                <p>Split a PDF into multiple individual files.</p>
+                <a href="#pdf-splitter">Try Now</a>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-water"></i>
+                <h3>Watermark Tool</h3>
+                <p>Add watermarks to your images or PDFs.</p>
+                <a href="#watermark-tool">Try Now</a>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-lock"></i>
+                <h3>PDF Protector</h3>
+                <p>Secure your PDFs with password protection.</p>
+                <a href="#pdf-protector">Try Now</a>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-file-image"></i>
+                <h3>PDF to Image</h3>
+                <p>Convert PDF pages into high-quality images.</p>
+                <a href="#pdf-to-image">Try Now</a>
+            </div>
+        </section>
+
+        <!-- AdSense Banner Ad -->
+        <div class="ad-space">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                    crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 AI Tools Hub. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Typing effect for hero text
+        const heroText = document.getElementById('hero-text');
+        const text = "Welcome to AI Tools Hub";
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                heroText.textContent = text.slice(0, index + 1);
+                index++;
+                setTimeout(typeText, 100); // Adjust speed here (ms)
+            } else {
+                setTimeout(() => {
+                    index = 0;
+                    typeText();
+                }, 2000); // Pause before restarting
+            }
+        }
+
+        // Start typing effect
+        typeText();
+    </script>
+</body>
+</html>
